@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 export const metadata = {
   title: "Researcher Name | Academic CV",
-  description: "Personal academic website for Researcher Name.",
+  description: "Personal academic website for Researcher Name.TEPPEPPEP",
 };
 
 export default function RootLayout({ children }) {
