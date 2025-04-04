@@ -41,7 +41,7 @@ export default function CV() {
       items: [
         "Python (Data Analysis, ML/DL)",
         "R (Statistical Analysis)",
-        "Java (Backend)",
+        "Java (Backend, Tools)",
         "JavaScript (React, Next.js)"
       ]
     }
