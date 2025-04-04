@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* DatePicker カスタマイズ */
+.react-datepicker {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+  
+  .react-datepicker__header {
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .react-datepicker__day {
+    border-radius: 9999px;
+  }
+  
+  .react-datepicker__day:hover {
+    background-color: #ecfdf5;
+  }
+  
+  .react-datepicker__day--selected,
+  .react-datepicker__day--in-range {
+    background-color: #10b981 !important;
+    color: white !important;
+  }
+  
+  .react-datepicker__day--selected:hover,
+  .react-datepicker__day--in-range:hover {
+    background-color: #059669 !important;
+  }
+  
+  .react-datepicker__day--keyboard-selected {
+    background-color: #10b981 !important;
+    color: white !important;
+  }
+  
+  .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
+    background-color: #ecfdf5 !important;
+  }
+  
+  .react-datepicker__day--in-range:not(.react-datepicker__day--selected) {
+    background-color: #d1fae5 !important;
+    color: #059669 !important;
+  } 
