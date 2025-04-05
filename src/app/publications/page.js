@@ -6,14 +6,16 @@ export default function Publications() {
     {
       type: "Journal Articles & Preprints",
       items: [
-        // {
-        //   title: "Identification and characterization of tRNA (Cm6) methyltransferase from Thermococcus kodakarensis",
-        //   authors: "T. Matsuda, R. Yamagami, A. Ihara, T. Suzuki, A. Hirata, H. Hori",
-        //   status: "Under review",
-        //   journal: "bioRxiv, Nucleic Acids Research",
-        //   year: "2025",
-        //   date: "2025-04"
-        // },
+
+        {
+          title: "A transfer RNA methyltransferase with an unusual domain composition catalyzes 2′-O-methylation at position 6 in tRNA.",
+          authors: "T. Matsuda, R. Yamagami, I. Aoi, T. Suzuki, A. Hirata, H. Hori",
+          journal: "bioRxiv",
+          year: "2025",
+          doi: "https://www.biorxiv.org/content/10.1101/2025.04.03.647152v1",
+          date: "2025-04",
+          articleType: ["Research", "Preprint"]
+        },
         {
           title: "Rational design of oligonucleotides for enhanced in vitro transcription of small RNA",
           authors: "T. Matsuda, H. Hori, R. Yamagami",
@@ -21,7 +23,8 @@ export default function Publications() {
           year: "2024",
           volume: "30(6): 710-727",
           doi: "https://rnajournal.cshlp.org/content/30/6/710.long",
-          date: "2024-05"
+          date: "2024-05",
+          articleType: ["Methods", "Research"]
         }
       ].sort((a, b) => new Date(b.date) - new Date(a.date))
     },
@@ -142,14 +145,30 @@ export default function Publications() {
                     <div className="space-y-1">
                       <div className="font-medium text-emerald-600">{item.title}</div>
                       <div className="text-sm text-gray-600">{item.authors}</div>
-                      <div className="text-sm text-gray-500">
-                        {item.journal} ({item.year}) {item.volume}
-                        {item.status && ` - ${item.status}`}
-                        {item.doi && (
-                          <a href={item.doi} target="_blank" rel="noopener noreferrer" 
-                             className="ml-2 text-emerald-600 hover:text-emerald-700">
-                            [Link]
-                          </a>
+                      <div className="text-sm text-gray-500 flex justify-between items-center">
+                        <div>
+                          {item.journal} ({item.year}) {item.volume}
+                          {item.status && ` - ${item.status}`}
+                          {item.doi && (
+                            <a href={item.doi} target="_blank" rel="noopener noreferrer" 
+                               className="ml-2 text-emerald-600 hover:text-emerald-700">
+                              [Link]
+                            </a>
+                          )}
+                        </div>
+                        {item.articleType && (
+                          <div className="flex gap-2">
+                            {item.articleType.map((type, index) => (
+                              <span key={index} className={`px-2 py-0.5 rounded-full text-xs ${
+                                type === 'Preprint' ? 'bg-orange-100 text-orange-800' :
+                                type === 'Research' ? 'bg-blue-100 text-blue-800' :
+                                type === 'Methods' ? 'bg-purple-100 text-purple-800' :
+                                'bg-gray-100 text-gray-800'
+                              }`}>
+                                {type}
+                              </span>
+                            ))}
+                          </div>
                         )}
                       </div>
                     </div>
