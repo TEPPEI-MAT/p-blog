@@ -57,18 +57,14 @@ const categoryColors = {
   }
 };
 
-// カラースキームの説明：
-// Research: スカイブルー - 研究の広がりを表す爽やかな青
-// Publication: パープル - 学術的な深みを表す紫
-// Conference: グリーン - 成長と交流を表す緑
-// Award: イエロー - 受賞や成果を表す明るい黄色
-// Release: オレンジ - ソフトウェアリリースを表す活気のある橙
-// Transitions: レッド - 変化や重要な転換を表す赤
-// Link: ブルー - 外部リンクを表す特徴的な青
-// etc: グレー - その他の情報を表すニュートラルな灰色
-
 const newsItems = [
-  // April 2024
+  {
+    date: "2025-04-04",
+    categories: ["Research", "Publication", "Link"],
+    title: "A preprint has been released on bioRxiv",
+    description: "Our preprint is now available on bioRxiv. Please see the link below for more information.",
+    link: "https://www.biorxiv.org/content/10.1101/2025.04.03.647152v1"
+  },
   {
     date: "2025-04-01",
     categories: ["Research", "Award"],
@@ -132,8 +128,6 @@ const newsItems = [
     title: "Seminar at Tokushima University",
     description: "Presented our research on novel RNA modification enzyme at University of the Ryukyus.",
   },
-
-  // February 2024
   {
     date: "2024-07-04",
     categories: ["Conference"],
@@ -183,20 +177,16 @@ export default function News() {
     );
   };
 
-  // フィルタリングとソート
   const filteredNews = newsItems
     .filter(item => {
-      // 検索クエリによるフィルタリング
       const matchesSearch = 
         (item.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
         (item.description?.toLowerCase() || '').includes(searchQuery.toLowerCase());
 
-      // カテゴリによるフィルタリング（積集合）
       const matchesCategories = 
         selectedCategories.length === 0 ||
         selectedCategories.every(cat => item.categories?.includes(cat));
 
-      // 日付によるフィルタリング
       const itemDate = new Date(item.date);
       const matchesDateRange = 
         (!startDate || itemDate >= startDate) &&
@@ -204,7 +194,7 @@ export default function News() {
 
       return matchesSearch && matchesCategories && matchesDateRange;
     })
-    .sort((a, b) => new Date(b.date) - new Date(a.date)); // 日付の新しい順にソート
+    .sort((a, b) => new Date(b.date) - new Date(a.date)); 
 
   return (
     <PageTransition>
@@ -213,10 +203,8 @@ export default function News() {
           News
         </h1>
 
-        {/* フィルターセクション */}
         <div className="mb-6 bg-white p-4 rounded-lg shadow-sm border border-gray-200">
           <div className="flex flex-wrap gap-4 items-center">
-            {/* 検索バー */}
             <div className="relative min-w-[200px] flex-1">
               <input
                 type="text"
@@ -240,7 +228,6 @@ export default function News() {
               </svg>
             </div>
 
-            {/* カテゴリーフィルター */}
             <div className="flex flex-wrap gap-2 flex-1">
               {allCategories.map(category => (
                 <button
@@ -257,7 +244,6 @@ export default function News() {
               ))}
             </div>
 
-            {/* 日付フィルター */}
             <div className="relative">
               <DatePicker
                 selectsRange={true}
@@ -291,7 +277,6 @@ export default function News() {
           </div>
         </div>
         
-        {/* ニュース一覧 */}
         <div className="space-y-4">
           {filteredNews.map((item, index) => (
             <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">

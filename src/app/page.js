@@ -64,16 +64,16 @@ export default function Home() {
             </div>
             <div className="space-y-3">
               <div className="text-sm">
+                <span className="text-emerald-600 font-medium">2025/4/4</span>
+                <p className="text-gray-700">A preprint has been released on bioRxiv</p>
+              </div>
+              <div className="text-sm">
                 <span className="text-emerald-600 font-medium">2025/4/1</span>
                 <p className="text-gray-700">Received Sasakawa Scientific Research Grant</p>
               </div>
               <div className="text-sm">
                 <span className="text-emerald-600 font-medium">2025/4/1</span>
                 <p className="text-gray-700">Entered the doctoral course at Ehime University</p>
-              </div>
-              <div className="text-sm">
-                <span className="text-emerald-600 font-medium">2025/4/1</span>
-                <p className="text-gray-700">New Laboratory Structure Launched</p>
               </div>
             </div>
           </div>
